@@ -11,11 +11,11 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/eriktrom/ember-cli-hapi-fastboot.git",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.12.0"
   },
-  "author": "",
+  "author": "Erik Trom",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.1.2",
@@ -36,16 +36,41 @@
     "ember-resolver": "^2.0.2",
     "ember-ajax": "0.6.2",
     "ember-disable-prototype-extensions": "^1.0.0",
-    "ember-try": "~0.0.8"
+    "ember-try": "~0.0.8",
+    "code": "1.x.x",
+    "eslint": "1.x.x",
+    "eslint-plugin-hapi": "1.x.x",
+    "lab": "5.x.x",
+    "lout": "7.x.x"
   },
   "keywords": [
     "ember-addon"
   ],
   "dependencies": {
+    "chalk": "^1.1.1",
     "contextify": "^0.1.14",
+    "debug": "^2.2.0",
     "ember-cli-babel": "^5.1.3",
+    "glob": "^5.0.14",
+    "najax": "^0.2.1",
     "rsvp": "^3.1.0",
-    "simple-dom": "^0.2.7"
+    "simple-dom": "^0.2.7",
+    "boom": "^2.x.x",
+    "cheerio": "^0.19.0",
+    "crumb": "4.x.x",
+    "glue": "^2.x.x",
+    "good": "6.x.x",
+    "good-console": "5.x.x",
+    "good-file": "5.x.x",
+    "good-http": "5.x.x",
+    "hapi": "9.x.x",
+    "hapi-auth-cookie": "3.x.x",
+    "hoek": "2.x.x",
+    "inert": "3.x.x",
+    "joi": "6.x.x",
+    "lodash": "^3.10.1",
+    "vision": "3.x.x",
+    "visionary": "^3.x.x"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

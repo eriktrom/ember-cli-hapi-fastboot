@@ -1,10 +1,10 @@
 import Ember from 'ember';
-import { initialize } from '../../../initializers/fastboot-hapi';
+import { initialize } from '../../../initializers/hapi-fastboot';
 import { module, test } from 'qunit';
 
 var registry, application;
 
-module('Unit | Initializer | fastboot hapi', {
+module('Unit | Initializer | hapi fastboot', {
   beforeEach: function() {
     Ember.run(function() {
       application = Ember.Application.create();

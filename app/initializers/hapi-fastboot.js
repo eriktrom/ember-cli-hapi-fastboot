@@ -58,6 +58,6 @@ export function initialize(application) {
 }
 
 export default {
-  name: 'fastboot-hapi',
+  name: 'hapi-fastboot',
   initialize: initialize
 };
