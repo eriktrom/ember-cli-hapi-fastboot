@@ -17,7 +17,7 @@ module.exports = {
     var contents = Fs.readFileSync(packagePath, { encoding: 'utf8' });
     var pkg = JSON.parse(contents);
 
-    pkg.scripts.start = 'ember fastboot --serve-assets';
+    pkg.scripts.start = 'ember hapi-fastboot --serve-assets';
 
     var newContents = JSON.stringify(pkg, null, 2);
     Fs.writeFileSync(packagePath, newContents, { encoding: 'utf8' });

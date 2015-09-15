@@ -8,7 +8,7 @@ module.exports = function runServer(callback, options) {
   options = options || { };
 
   if (!options.port) {
-    options.port = '49741';
+    options.port = '3000';
   }
 
   var args = [
@@ -27,7 +27,7 @@ module.exports = function runServer(callback, options) {
     onOutput: function(output, child) {
       console.log('output: ' + output);
 
-      if (output.indexOf('Ember FastBoot running at') > -1) {
+      if (output.indexOf('Web server started at:') > -1) {
         callback(child);
       }
     }

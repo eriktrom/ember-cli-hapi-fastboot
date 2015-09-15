@@ -1,4 +1,4 @@
-/*globals najax, FastBoot, Ember*/
+/*globals najax, Ember*/
 var nodeAjax = function(url, type, options) {
   var adapter = this;
 

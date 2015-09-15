@@ -1,4 +1,18 @@
-# Hapi-ssr
+# Ember Cli Hapi Fastboot
+
+## Try Me
+
+    $ git clone https://github.com/eriktrom/ember-cli-hapi-fastboot
+
+    $ cd ember-cli-hapi-fastboot
+
+    $ bower install
+
+    $ npm install
+
+    $ ember hapi-fastboot --serve-assets
+
+Visit http://localhost:3000/
 
 This README outlines the details of collaborating on this Ember addon.
 
