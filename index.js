@@ -15,7 +15,6 @@ module.exports = {
   },
 
   contentFor: function(type) {
-    // do nothing unless running `ember fastboot` command
     if (!process.env.EMBER_CLI_HAPI_FASTBOOT) { return; }
 
     if (type === 'body') {
@@ -34,9 +33,9 @@ module.exports = {
   },
 
   included: function() {
-    if (process.env.EMBER_CLI_HAPI_FASTBOOT) {
-      this.app.options.storeConfigInMeta = false;
-      process.env.EMBER_CLI_HAPI_FASTBOOT_APP_NAME = this.app.name;
-    }
+    if (!process.env.EMBER_CLI_HAPI_FASTBOOT) { return; }
+
+    this.app.options.storeConfigInMeta = false;
+    process.env.EMBER_CLI_HAPI_FASTBOOT_APP_NAME = this.app.name;
   }
 };

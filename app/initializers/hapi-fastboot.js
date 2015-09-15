@@ -50,9 +50,11 @@ export function initialize(App) {
         });
 
         var serializer = new SimpleDOM.HTMLSerializer(SimpleDOM.voidMap);
+        var outerHTMLBody = serializer.serialize(element);
+        var innerHTMLBody = outerHTMLBody.slice(6, outerHTMLBody.length-7); // strip <body></body>
 
         return {
-          body: serializer.serialize(element),
+          body: innerHTMLBody,
           title: title
         };
       });
