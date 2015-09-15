@@ -1,5 +1,7 @@
 # Ember Cli Hapi Fastboot
 
+Inspired and currently similar to [Ember Cli Fastboot](https://github.com/tildeio/ember-cli-fastboot) (written by Tom Dale for express).
+
 ## Try Me
 
     $ git clone https://github.com/eriktrom/ember-cli-hapi-fastboot
