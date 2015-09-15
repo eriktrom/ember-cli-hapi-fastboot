@@ -1,5 +1,5 @@
 {
-  "name": "hapi-ssr",
+  "name": "ember-cli-hapi-fastboot",
   "dependencies": {
     "ember": "canary",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.5",

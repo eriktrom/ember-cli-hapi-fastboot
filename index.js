@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'hapi-ssr'
+  name: 'ember-cli-hapi-fastboot',
 };
