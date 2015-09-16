@@ -1,13 +1,16 @@
-/*jshint node:true*/
+/*jshint node:true, -W064*/
 /*globals describe, before, it, after*/
 
 var expect = require('chai').expect;
 var RSVP = require('rsvp');
-var startServer = require('../helpers/start-server');
-var request = RSVP.denodeify(require('request'));
+var Request = RSVP.denodeify(require('request'));
+var Path = require('path');
+var StartServer = require('../helpers/start-server');
+// var Server = require('../../lib/models/server');
+
+var internals = {};
 
 describe('simple acceptance', function() {
-  var server;
 
   before(function(done) {
     // start the server once for all tests
@@ -15,19 +18,19 @@ describe('simple acceptance', function() {
 
     function grabChild(child) {
       console.log('saving child');
-      server = child;
+      internals.server = child;
       done();
     }
 
-    return startServer(grabChild);
+    return StartServer(grabChild);
   });
 
   after(function() {
-    server.kill('SIGINT');
+    internals.server.kill('SIGINT');
   });
 
   it('/ HTML contents', function() {
-    return request('http://localhost:3000/')
+    return Request('http://localhost:3000/')
       .then(function(response) {
         expect(response.statusCode).to.equal(200);
         expect(response.headers["content-type"]).to.eq("text/html; charset=utf-8");
@@ -37,7 +40,7 @@ describe('simple acceptance', function() {
   });
 
   it('/posts HTML contents', function() {
-    return request('http://localhost:3000/posts')
+    return Request('http://localhost:3000/posts')
       .then(function(response) {
         expect(response.statusCode).to.equal(200);
         expect(response.headers["content-type"]).to.eq("text/html; charset=utf-8");
@@ -48,7 +51,7 @@ describe('simple acceptance', function() {
   });
 
   it('/not-found HTML contents', function() {
-    return request('http://localhost:3000/not-found')
+    return Request('http://localhost:3000/not-found')
       .then(function(response) {
         expect(response.statusCode).to.equal(404);
         expect(response.headers["content-type"]).to.eq("text/plain; charset=utf-8");
@@ -57,7 +60,7 @@ describe('simple acceptance', function() {
   });
 
   it('/boom HTML contents', function() {
-    return request('http://localhost:3000/boom')
+    return Request('http://localhost:3000/boom')
       .then(function(response) {
         expect(response.statusCode).to.equal(500);
         expect(response.headers["content-type"]).to.eq("text/plain; charset=utf-8");
@@ -66,7 +69,7 @@ describe('simple acceptance', function() {
   });
 
   it('/assets/vendor.js', function() {
-    return request('http://localhost:3000/assets/vendor.js')
+    return Request('http://localhost:3000/assets/vendor.js')
       .then(function(response) {
         // Asset servering is off by default
         expect(response.statusCode).to.equal(404);
@@ -75,3 +78,23 @@ describe('simple acceptance', function() {
       });
   });
 });
+
+
+internals.manifest = {
+  connections: [
+    {
+      host: 'localhost',
+      port: 0,
+      labels: ['web']
+    },
+  ],
+  plugins: {
+    './home': [{
+      'select': ['web']
+    }]
+  }
+};
+
+internals.composeOptions = {
+  relativeTo: Path.resolve(__dirname, '../../lib/models/server')
+};
